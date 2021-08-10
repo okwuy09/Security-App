@@ -98,15 +98,15 @@ class Sos extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: Container(
-                      color: Colors.white,
-                      //height: 100,
-                      //width: 500,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Column(
-                            children: [
-                              Material(
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Material(
                                 color: Colors.black,
                                 borderRadius: BorderRadius.circular(18.0),
                                 elevation: 5.0,
@@ -134,19 +134,20 @@ class Sos extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                          //SizedBox(height: 5),
-                          TextButton(
-                            child: Text(
-                              'View Numbers',
-                              style: kTextStyle.copyWith(
-                                  fontSize: 20, color: Colors.lightBlue),
                             ),
-                            onPressed: () {},
+                          ],
+                        ),
+                        TextButton(
+                          child: Text(
+                            'View Numbers',
+                            style: kTextStyle.copyWith(
+                                fontSize: 20, color: Colors.lightBlue),
                           ),
-                        ],
-                      )),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
