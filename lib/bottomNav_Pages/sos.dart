@@ -26,16 +26,17 @@ class Sos extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 20, left: 10),
                               child: Row(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(35),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          'https://hindibate.com/wp/Good-morning-nature-bird-image-304.png'),
-                                      width: 50,
-                                      height: 50,
-                                      fit: BoxFit.cover,
+                                  Container(
+                                      height: 50.0,
+                                      width: 50.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                                      child: CircleAvatar(
+                                          radius: 50,
+                                          backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2014/07/09/10/04/man-388104_960_720.jpg'),
                                     ),
-                                  ),
+                                   ),
                                   SizedBox(width: 2.0),
                                   CircleAvatar(
                                     radius: 6,

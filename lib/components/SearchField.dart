@@ -12,7 +12,6 @@ class MySearchField extends StatefulWidget {
 }
 
 class _MySearchFieldState extends State<MySearchField> {
-
   @override
   Widget build(BuildContext context) {
     return SearchField(
@@ -23,9 +22,9 @@ class _MySearchFieldState extends State<MySearchField> {
       ),
       controller: widget.searchController,
       searchInputDecoration: kTextFieldDecoration.copyWith(
-        fillColor: Colors.white,
+        fillColor: Colors.black,
         filled: true,
-        hintStyle: TextStyle(color: Colors.black),
+        hintStyle: TextStyle(color: Colors.white),
         hintText: 'Search',
         prefixIcon: Icon(
           Icons.search,

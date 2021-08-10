@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:security_app/components/Post.dart';
+import 'package:security_app/components/comment.dart';
 
 // ignore: must_be_immutable
 class Feed extends StatelessWidget {
@@ -116,17 +117,17 @@ class Feed extends StatelessWidget {
                                     GestureDetector(
                                       child: Row(
                                         children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            child: Image(
-                                              image: NetworkImage(
-                                                  posts[i].userImage),
-                                              width: 50,
-                                              height: 50,
-                                              fit: BoxFit.cover,
+                                          Container(
+                                      height: 50.0,
+                                      width: 50.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                                      child: CircleAvatar(
+                                          radius: 50,
+                                          backgroundImage: NetworkImage(posts[i].userImage),
+                                              ),
                                             ),
-                                          ),
                                           SizedBox(
                                             width: 10,
                                           ),
@@ -140,7 +141,7 @@ class Feed extends StatelessWidget {
                                       ),
                                       onTap: () {},
                                     ),
-    
+
                                     //post date
                                     Container(
                                       margin: EdgeInsets.symmetric(
@@ -159,14 +160,14 @@ class Feed extends StatelessWidget {
                                   ],
                                 ),
                               ),
-    
+
                               Image(
                                 image: NetworkImage(
                                   posts[i].postImage,
                                 ),
                                 width: MediaQuery.of(context).size.width,
                               ),
-    
+
                               // caption
                               Container(
                                 width: MediaQuery.of(context).size.width,
@@ -191,9 +192,10 @@ class Feed extends StatelessWidget {
                                   ),
                                 ),
                               ),
-    
+
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   IconButton(
                                       icon: Icon(Icons.thumb_up_off_alt),
@@ -205,11 +207,19 @@ class Feed extends StatelessWidget {
                                   Text('2'),
                                   IconButton(
                                       icon: Icon(Icons.comment),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyComment()));
+                                      }),
+                                  IconButton(
+                                      icon: Icon(Icons.money),
                                       onPressed: () {}),
                                   IconButton(
-                                      icon: Icon(Icons.money), onPressed: () {}),
-                                  IconButton(
-                                      icon: Icon(Icons.share), onPressed: () {}),
+                                      icon: Icon(Icons.share),
+                                      onPressed: () {}),
                                   IconButton(
                                       icon: Icon(Icons.save), onPressed: () {}),
                                 ],

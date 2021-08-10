@@ -22,7 +22,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
    List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Sos(),
-    Sos(),
+    Container(),
     FindFriend(),
   ];
 
