@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:security_app/bottomNav_Pages/bottom_navigation.dart';
-import 'package:security_app/components/speeddial.dart';
 import 'package:security_app/screen/Phone_input_page.dart';
 import 'package:security_app/bottomNav_pages/home_page.dart';
 import 'package:security_app/screen/signIn_page.dart';

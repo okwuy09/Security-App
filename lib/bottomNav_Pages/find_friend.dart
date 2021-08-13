@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:security_app/components/dropdown_field.dart';
 import 'package:security_app/constants.dart';
 
 class FindFriend extends StatefulWidget {

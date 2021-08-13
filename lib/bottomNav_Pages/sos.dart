@@ -58,7 +58,7 @@ class Sos extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 100.0),
                   GestureDetector(
                     child: CircleAvatar(
                       backgroundColor: Colors.red[900],
@@ -84,12 +84,6 @@ class Sos extends StatelessWidget {
                       ),
                     ),
                     onTap: () {},
-                  ),
-                  SizedBox(height: 60.0),
-                  RoundedButton(
-                    title: 'Cancel',
-                    color: Colors.green[900],
-                    onpressed: () {},
                   ),
                 ],
               ),

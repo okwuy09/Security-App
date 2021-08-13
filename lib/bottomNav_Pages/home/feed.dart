@@ -4,85 +4,73 @@ import 'package:security_app/components/Post.dart';
 import 'package:security_app/components/comment.dart';
 
 // ignore: must_be_immutable
-class Feed extends StatelessWidget {
-  List<Post> posts = [
-    Post(
-        username: "Marianna",
-        userImage:
-            "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
-        postImage:
-            "https://i2.wp.com/media.premiumtimesng.com/wp-content/files/2019/12/MPAPE-e1577550737404.jpg?fit=664%2C384&ssl=1",
-        caption:
-            "The series still won't be out for over a year, but the fact that a serialised story from Middle Earth is being produced is something for LOTR fans to be thrilled out."),
-    Post(
-        username: "Donavon",
-        userImage:
-            "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
-        postImage:
-            "https://homelandnewsng.com/wp-content/uploads/2016/02/armed-robbers.jpg",
-        caption: "Cumque quia adipisci qui reprehenderit quo."),
-    Post(
-        username: "Sandra",
-        userImage:
-            "https://hindibate.com/wp/Good-morning-beautiful-nature-image-301.png",
-        postImage:
-            "https://newsghana.com.gh/wp-content/uploads/2014/06/Pix-1-2.jpg",
-        caption:
-            "Et in corrupti aperiam. Ut incidunt ut illo recusandae accusantium. Id et sapiente cumque voluptas quo possimus. Neque at corporis rerum quidem magnam."),
-    Post(
-        username: "Trace",
-        userImage:
-            "https://st3.depositphotos.com/10560864/15470/i/1600/depositphotos_154708300-stock-photo-natural-portraitbeautiful-asian-girl-smiling.jpg",
-        postImage:
-            "https://guardian.ng/wp-content/uploads/2017/01/Bank-robbery.jpg",
-        caption: "Quis saepe aut ut quidem ut."),
-    // Post(
-    //     username: "Regan",
-    //     userImage:
-    //         "https://s3.amazonaws.com/uifaces/faces/twitter/thedjpetersen/128.jpg",
-    //     postImage:
-    //         "https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    //     caption: "Enim vero porro aliquid dignissimos."),
-    // Post(
-    //     username: "Garnett",
-    //     userImage:
-    //         "https://s3.amazonaws.com/uifaces/faces/twitter/sterlingrules/128.jpg",
-    //     postImage:
-    //         "https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    //     caption: "Veritatis tempora eius non hic delectus voluptas et."),
-    // Post(
-    //     username: "Alvah",
-    //     userImage:
-    //         "https://s3.amazonaws.com/uifaces/faces/twitter/IsaryAmairani/128.jpg",
-    //     postImage:
-    //         "https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    //     caption:
-    //         "Nostrum voluptatem non minus totam amet quis culpa voluptatem."),
-    // Post(
-    //     username: "Kailey",
-    //     userImage:
-    //         "https://s3.amazonaws.com/uifaces/faces/twitter/stephcoue/128.jpg",
-    //     postImage:
-    //         "https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    //     caption: "Aut voluptatem iusto est nesciunt vel fuga optio et."),
-    // Post(
-    //     username: "Ellie",
-    //     userImage:
-    //         "https://s3.amazonaws.com/uifaces/faces/twitter/swooshycueb/128.jpg",
-    //     postImage:
-    //         "https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    //     caption: "Molestiae id porro numquam iure."),
-    // Post(
-    //     username: "Jeremie",
-    //     userImage:
-    //         "https://s3.amazonaws.com/uifaces/faces/twitter/sindresorhus/128.jpg",
-    //     postImage:
-    //         "https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    //     caption: "Et quod sunt tempore."),
-  ];
+class Feed extends StatefulWidget {
+  @override
+  _FeedState createState() => _FeedState();
+}
+
+class _FeedState extends State<Feed> {
+  // //MyComment comment = MyComment.fileData;
+  int thumbUp = 0;
+  int thumbDown = 0;
+  VoidCallback? onpressed;
+  // //int commentNumber = 0;
+
+  void incrementthumbup() {
+    setState(() {
+      thumbUp++;
+    });
+  }
+
+  void incrementthumbDown() {
+    setState(() {
+      thumbDown++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Post> posts = [
+      Post(
+        uplikeCount: '$thumbUp',
+        downlikeCount: '$thumbDown',
+          uplike: () {
+            incrementthumbup();
+          },
+          downlike: () {
+            incrementthumbDown();
+          },
+          username: "Marianna",
+          userImage:
+              "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
+          postImage:
+              "https://i2.wp.com/media.premiumtimesng.com/wp-content/files/2019/12/MPAPE-e1577550737404.jpg?fit=664%2C384&ssl=1",
+          caption:
+              "The series still won't be out for over a year, but the fact that a serialised story from Middle Earth is being produced is something for LOTR fans to be thrilled out."),
+      Post(
+          username: "Donavon",
+          userImage:
+              "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
+          postImage:
+              "https://homelandnewsng.com/wp-content/uploads/2016/02/armed-robbers.jpg",
+          caption: "Cumque quia adipisci qui reprehenderit quo."),
+      Post(
+          username: "Sandra",
+          userImage:
+              "https://hindibate.com/wp/Good-morning-beautiful-nature-image-301.png",
+          postImage:
+              "https://newsghana.com.gh/wp-content/uploads/2014/06/Pix-1-2.jpg",
+          caption:
+              "Et in corrupti aperiam. Ut incidunt ut illo recusandae accusantium. Id et sapiente cumque voluptas quo possimus. Neque at corporis rerum quidem magnam."),
+      Post(
+          username: "Trace",
+          userImage:
+              "https://st3.depositphotos.com/10560864/15470/i/1600/depositphotos_154708300-stock-photo-natural-portraitbeautiful-asian-girl-smiling.jpg",
+          postImage:
+              "https://guardian.ng/wp-content/uploads/2017/01/Bank-robbery.jpg",
+          caption: "Quis saepe aut ut quidem ut."),
+    ];
+
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
@@ -96,7 +84,7 @@ class Feed extends StatelessWidget {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: posts.length,
-                    itemBuilder: (ctx, i) {
+                    itemBuilder: (context, i) {
                       return Padding(
                         padding: const EdgeInsets.only(
                             left: 4.0, right: 4.0, bottom: 2.0),
@@ -118,16 +106,18 @@ class Feed extends StatelessWidget {
                                       child: Row(
                                         children: [
                                           Container(
-                                      height: 50.0,
-                                      width: 50.0,
-                                      decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          borderRadius: BorderRadius.all(Radius.circular(50))),
-                                      child: CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage: NetworkImage(posts[i].userImage),
-                                              ),
+                                            height: 50.0,
+                                            width: 50.0,
+                                            decoration: BoxDecoration(
+                                                color: Colors.blue,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(50))),
+                                            child: CircleAvatar(
+                                              radius: 50,
+                                              backgroundImage: NetworkImage(
+                                                  posts[i].userImage),
                                             ),
+                                          ),
                                           SizedBox(
                                             width: 10,
                                           ),
@@ -198,13 +188,14 @@ class Feed extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   IconButton(
-                                      icon: Icon(Icons.thumb_up_off_alt),
-                                      onPressed: () {}),
-                                  Text('5'),
+                                    icon: Icon(Icons.thumb_up_off_alt),
+                                    onPressed: posts[i].uplike,
+                                  ),
+                                  Text('${posts[i].uplikeCount}'),
                                   IconButton(
                                       icon: Icon(Icons.thumb_down_off_alt),
-                                      onPressed: () {}),
-                                  Text('2'),
+                                      onPressed: posts[i].downlike),
+                                  Text('${posts[i].downlikeCount}'),
                                   IconButton(
                                       icon: Icon(Icons.comment),
                                       onPressed: () {
@@ -214,6 +205,7 @@ class Feed extends StatelessWidget {
                                                 builder: (context) =>
                                                     MyComment()));
                                       }),
+                                  Text(''),
                                   IconButton(
                                       icon: Icon(Icons.money),
                                       onPressed: () {}),

@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:security_app/bottomNav_Pages/find_friend.dart';
 import 'package:security_app/bottomNav_Pages/sos.dart';
+import 'package:security_app/components/Posting_page.dart';
+import 'package:security_app/components/new%20comment%20page.dart';
 import 'package:security_app/constants.dart';
 import 'package:security_app/bottomNav_pages/home_page.dart';
 
@@ -22,7 +24,8 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
    List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Sos(),
-    Container(),
+    PostingPage(),
+    CommentScreen(),
     FindFriend(),
   ];
 
@@ -50,9 +53,13 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
               icon: Icon(Icons.aod),
               label: 'SOS',
             ),
+             BottomNavigationBarItem(
+              icon: Icon(Icons.live_tv),
+              label: 'Live',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.notification_add),
-              label: 'Notification',
+              label: 'Notif',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_search),
@@ -60,12 +67,13 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
             ),
           ],
           iconSize: 26,
-          unselectedLabelStyle: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
+          unselectedLabelStyle: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
           selectedIconTheme: IconThemeData(color: Colors.yellow[800], size: 26),
           unselectedItemColor: kbottomnavigationIconColor,
           selectedLabelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 16.0),
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.black,
+          showSelectedLabels: true,
           onTap: _onItemTapped,
         ),
       ),
