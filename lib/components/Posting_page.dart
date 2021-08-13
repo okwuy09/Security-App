@@ -2,9 +2,9 @@ import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:security_app/components/Post.dart';
-import 'package:security_app/components/comment.dart';
+import 'package:security_app/components/new_comment_page.dart';
 
-// ignore: must_be_immutable
+// ignore: must_be_immutablegit add
 class PostingPage extends StatefulWidget {
   @override
   _PostingPageState createState() => _PostingPageState();
@@ -183,7 +183,7 @@ class _PostingPageState extends State<PostingPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MyComment()));
+                                                  CommentScreen()));
                                     }),
                                 Text(''),
                                 IconButton(

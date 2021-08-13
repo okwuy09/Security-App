@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:security_app/bottomNav_Pages/find_friend.dart';
 import 'package:security_app/bottomNav_Pages/sos.dart';
 import 'package:security_app/components/Posting_page.dart';
-import 'package:security_app/components/new%20comment%20page.dart';
+import 'package:security_app/components/new_comment_page.dart';
 import 'package:security_app/constants.dart';
 import 'package:security_app/bottomNav_pages/home_page.dart';
 
