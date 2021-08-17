@@ -15,11 +15,32 @@ class PhoneInputPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: Colors.black,
+              )),
+          automaticallyImplyLeading: false,
+          toolbarHeight: 80.0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Container(
+              child: Text(
+            'ENTER YOUR PHONE NUMBER',
+            style: kTextStyle.copyWith(
+                color: Colors.yellow[800], fontSize: 20.5, letterSpacing: 0.5),
+            textAlign: TextAlign.center,
+          )),
+        ),
         backgroundColor: Colors.white,
         body: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 18.0),
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 30.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,17 +48,6 @@ class PhoneInputPage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Container(
-                            child: Text(
-                          'ENTER YOUR PHONE NUMBER',
-                          style: kTextStyle.copyWith(
-                            color: Colors.yellow[800],
-                              fontSize: 30.0, letterSpacing: 1.5),
-                          textAlign: TextAlign.center,
-                        )),
-                      ),
                       SizedBox(height: 10.0),
                       Text(
                         'we will send you 4 (four) digit OTP',
@@ -84,17 +94,18 @@ class PhoneInputPage extends StatelessWidget {
                           //Implement Generate OTP functionality.
                         },
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 30.0),
                       Text(
                         'Or',
                         style: kTextStyle.copyWith(fontSize: 20.0),
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 30.0),
                       Text(
-                        'Sign in using',
+                        'Sign in using:',
                         style: kTextStyle.copyWith(
                             fontSize: 20.0, color: Colors.black54),
                       ),
+                      SizedBox(height: 15.0),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [

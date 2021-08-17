@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:security_app/components/Post.dart';
-import 'package:security_app/components/comment.dart';
+import 'package:security_app/components/new_comment_page.dart';
 
 // ignore: must_be_immutable
 class Feed extends StatefulWidget {
+  List? postsList;
+  Feed({this.postsList});
   @override
-  _FeedState createState() => _FeedState();
+  _FeedState createState() => _FeedState(postsList);
 }
 
 class _FeedState extends State<Feed> {
@@ -23,23 +25,18 @@ class _FeedState extends State<Feed> {
   }
 
   void incrementthumbDown() {
-    setState(() {
-      thumbDown++;
-    });
+    
   }
+
+  getlist() {}
+
+  List? postsList;
+  _FeedState(this.postsList);
 
   @override
   Widget build(BuildContext context) {
-    List<Post> posts = [
+    postsList = [
       Post(
-        uplikeCount: '$thumbUp',
-        downlikeCount: '$thumbDown',
-          uplike: () {
-            incrementthumbup();
-          },
-          downlike: () {
-            incrementthumbDown();
-          },
           username: "Marianna",
           userImage:
               "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
@@ -70,7 +67,6 @@ class _FeedState extends State<Feed> {
               "https://guardian.ng/wp-content/uploads/2017/01/Bank-robbery.jpg",
           caption: "Quis saepe aut ut quidem ut."),
     ];
-
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
@@ -83,7 +79,7 @@ class _FeedState extends State<Feed> {
                 child: ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: posts.length,
+                    itemCount: postsList!.length,
                     itemBuilder: (context, i) {
                       return Padding(
                         padding: const EdgeInsets.only(
@@ -115,14 +111,14 @@ class _FeedState extends State<Feed> {
                                             child: CircleAvatar(
                                               radius: 50,
                                               backgroundImage: NetworkImage(
-                                                  posts[i].userImage),
+                                                  postsList![i].userImage),
                                             ),
                                           ),
                                           SizedBox(
                                             width: 10,
                                           ),
                                           Text(
-                                            posts[i].username,
+                                            postsList![i].username,
                                             style: GoogleFonts.roboto(
                                               fontSize: 18,
                                             ),
@@ -153,7 +149,7 @@ class _FeedState extends State<Feed> {
 
                               Image(
                                 image: NetworkImage(
-                                  posts[i].postImage,
+                                  postsList![i].postImage,
                                 ),
                                 width: MediaQuery.of(context).size.width,
                               ),
@@ -172,7 +168,7 @@ class _FeedState extends State<Feed> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: "${posts[i].caption}",
+                                        text: "${postsList![i].caption}",
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w500,
@@ -189,13 +185,22 @@ class _FeedState extends State<Feed> {
                                 children: <Widget>[
                                   IconButton(
                                     icon: Icon(Icons.thumb_up_off_alt),
-                                    onPressed: posts[i].uplike,
+                                    onPressed: (){
+                                      setState(() {
+                                          thumbUp++;
+                                        });
+                                    },
                                   ),
-                                  Text('${posts[i].uplikeCount}'),
+                                  Text('$thumbUp'),
                                   IconButton(
                                       icon: Icon(Icons.thumb_down_off_alt),
-                                      onPressed: posts[i].downlike),
-                                  Text('${posts[i].downlikeCount}'),
+                                      onPressed: (){
+                                        setState(() {
+                                          thumbDown++;
+                                        });
+                                      }
+                                      ),
+                                  Text('$thumbDown'),
                                   IconButton(
                                       icon: Icon(Icons.comment),
                                       onPressed: () {
@@ -203,7 +208,7 @@ class _FeedState extends State<Feed> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    MyComment()));
+                                                    CommentScreen()));
                                       }),
                                   Text(''),
                                   IconButton(

@@ -39,6 +39,7 @@ dependencies:
   firebase_core: ^1.4.0
   cloud_firestore: ^2.4.0
   keyboard_actions: ^3.4.3
+  image_picker: ^0.8.3+2
   #contacts_service: ^0.6.1
   #permission_handler: ^8.1.4+2
 

@@ -1,8 +1,11 @@
-// import 'dart:io';
+import 'dart:io';
 // import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
+import 'package:security_app/bottomNav_Pages/home/feed.dart';
+import 'package:security_app/bottomNav_Pages/home_page.dart';
+import 'package:security_app/components/Post.dart';
 
 class WritePost extends StatefulWidget {
   //final MyProfileData myData;
@@ -12,9 +15,11 @@ class WritePost extends StatefulWidget {
 }
 
 class _WritePost extends State<WritePost> {
+  final formKey = GlobalKey<FormState>();
   TextEditingController writingTextController = TextEditingController();
   final FocusNode _nodeText1 = FocusNode();
   FocusNode writingTextFocus = FocusNode();
+  late File _postImageFile;
   String? dropdownValue = 'Public';
   //bool _isLoading = false;
   //File _postImageFile;
@@ -80,8 +85,21 @@ class _WritePost extends State<WritePost> {
   //   Navigator.pop(context);
   // }
 
+  List? postsList;
+
   @override
   Widget build(BuildContext context) {
+    // List<Post> posts = [
+    //   Post(
+    //       username: "Marianna",
+    //       userImage:
+    //           "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
+    //       postImage:
+    //           "https://i2.wp.com/media.premiumtimesng.com/wp-content/files/2019/12/MPAPE-e1577550737404.jpg?fit=664%2C384&ssl=1",
+    //       caption:
+    //           "The series still won't be out for over a year, but the fact that a serialised story from Middle Earth is being produced is something for LOTR fans to be thrilled out."),
+    // ];
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -96,17 +114,43 @@ class _WritePost extends State<WritePost> {
         centerTitle: true,
         actions: <Widget>[
           ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.grey[50])),
-              onPressed: () {},
-              //_postToFB(),
-              child: Text(
-                'Post',
-                style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.yellow[800],
-                    fontWeight: FontWeight.bold),
-              ))
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.grey[50])),
+            onPressed: () {
+              print('post summited');
+              if (writingTextController.text != null) {
+                print(writingTextController.text);
+                setState(() {
+                  var value = Post(
+                    username: "Okwuchukwu",
+                    userImage:
+                        "https://hindibate.com/wp/Good-morning-nature-bird-image-304.png",
+                    postImage:
+                        "https://i2.wp.com/media.premiumtimesng.com/wp-content/files/2019/12/MPAPE-e1577550737404.jpg?fit=664%2C384&ssl=1",
+                    caption: writingTextController.text,
+                  );
+                  postsList!.insert(0, value);
+                  Feed(postsList: postsList);
+                });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomePage()));
+                writingTextController.clear();
+                FocusScope.of(context).unfocus();
+              } else {
+                print("Not validated");
+              }
+            },
+            //_postToFB(),
+            child: Text(
+              'Post',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.yellow[800],
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
         ],
       ),
       body: Stack(
@@ -161,6 +205,7 @@ class _WritePost extends State<WritePost> {
                           ],
                         ),
                         TextFormField(
+                          key: formKey,
                           autofocus: true,
                           focusNode: writingTextFocus,
                           decoration: InputDecoration(
@@ -172,6 +217,8 @@ class _WritePost extends State<WritePost> {
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                         ),
+                        // _postImageFile != null ? Image.file(_postImageFile, fit: BoxFit.fill,) :
+                        //   Container(),
                       ],
                     ),
                   ),

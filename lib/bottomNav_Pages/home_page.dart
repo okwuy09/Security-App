@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage>
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Row(
+                child: Stack(
                   children: [
                     GestureDetector(
                       child: Padding(
@@ -61,10 +61,13 @@ class _HomePageState extends State<HomePage>
                       ),
                       onTap: () {},
                     ),
-                    SizedBox(width: 2.0),
-                    CircleAvatar(
-                      radius: 6,
-                      backgroundColor: Colors.greenAccent[700],
+                    Positioned(
+                      bottom: 8.0,
+                      right: 15.0,
+                      child: CircleAvatar(
+                        radius: 6,
+                        backgroundColor: Colors.greenAccent[700],
+                      ),
                     ),
                   ],
                 ),

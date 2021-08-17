@@ -176,7 +176,7 @@ class Comment extends StatelessWidget {
       this.timestamp});
 
   factory Comment.fromDocument(DocumentSnapshot document) {
-    var data = document.data();
+    //var data = document.data();
     return Comment(
       // username: data['username'],
       // userId: data['userId'],

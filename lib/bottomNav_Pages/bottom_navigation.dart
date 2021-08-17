@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:security_app/bottomNav_Pages/find_friend.dart';
+import 'package:security_app/bottomNav_Pages/notification_page.dart';
 import 'package:security_app/bottomNav_Pages/sos.dart';
-import 'package:security_app/components/Posting_page.dart';
 import 'package:security_app/components/new_comment_page.dart';
 import 'package:security_app/constants.dart';
 import 'package:security_app/bottomNav_pages/home_page.dart';
@@ -24,7 +24,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
    List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Sos(),
-    PostingPage(),
+    NotificationPage(),
     CommentScreen(),
     FindFriend(),
   ];
@@ -70,9 +70,9 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
           unselectedLabelStyle: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
           selectedIconTheme: IconThemeData(color: Colors.yellow[800], size: 26),
           unselectedItemColor: kbottomnavigationIconColor,
-          selectedLabelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 16.0),
+          selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.0),
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.black,
+          selectedItemColor: Colors.yellow[800],
           showSelectedLabels: true,
           onTap: _onItemTapped,
         ),
