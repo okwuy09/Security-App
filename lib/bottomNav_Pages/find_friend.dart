@@ -127,7 +127,7 @@ class _FindFriendState extends State<FindFriend> {
                                         elevation: 5.0,
                                         child: MaterialButton(
                                           onPressed: () {},
-                                          minWidth: 200.0,
+                                          minWidth: 150.0,
                                           height: 42.0,
                                           child: Row(
                                             mainAxisAlignment:

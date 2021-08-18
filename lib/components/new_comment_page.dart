@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "dart:async";
+
+import 'package:google_fonts/google_fonts.dart';
 //import "main.dart"; //for current user
 
 class CommentScreen extends StatefulWidget {
@@ -32,9 +34,18 @@ class _CommentScreenState extends State<CommentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new, color: Colors.black,
+          ),
+        ),
         title: Text(
           "Comments",
-          style: TextStyle(color: Colors.black),
+          style: GoogleFonts.sora(color: Colors.black),
         ),
         backgroundColor: Colors.white,
       ),
@@ -59,7 +70,7 @@ class _CommentScreenState extends State<CommentScreen> {
             onPressed: () {
               addComment(_commentController.text);
             },
-            child: Text("Post"),
+            child: Text("Post", style: GoogleFonts.sora()),
           ),
         ),
       ],
@@ -74,7 +85,7 @@ class _CommentScreenState extends State<CommentScreen> {
             if (!snapshot.hasData)
               return Container(
                   alignment: FractionalOffset.center,
-                  child: Text('welcome'));//CircularProgressIndicator());
+                  child: Text('welcome')); //CircularProgressIndicator());
 
             this.didFetchComments = true;
             this.fetchedComments = snapshot.data;
@@ -91,13 +102,12 @@ class _CommentScreenState extends State<CommentScreen> {
     } else {
       // for optimistic updating
       return ListView.builder(
-              itemCount: this.fetchedComments!.length,
-              itemBuilder: (context, index) {
-                return this.fetchedComments![index]; //Any widget you want to use.
-              },
-            );
-      
-      
+        itemCount: this.fetchedComments!.length,
+        itemBuilder: (context, index) {
+          return this.fetchedComments![index]; //Any widget you want to use.
+        },
+      );
+
       //ListView(children: this.fetchedComments);
     }
   }
@@ -150,13 +160,12 @@ class _CommentScreenState extends State<CommentScreen> {
     setState(() {
       fetchedComments = List.from(fetchedComments = [])
         ..add(Comment(
-            username: '',//currentUserModel.username,
-            comment: comment,
-            timestamp: DateTime.now(),
-            avatarUrl: '', //currentUserModel.photoUrl,
-            userId: '',//currentUserModel.id,
-            )
-            );
+          username: '', //currentUserModel.username,
+          comment: comment,
+          timestamp: DateTime.now(),
+          avatarUrl: '', //currentUserModel.photoUrl,
+          userId: '', //currentUserModel.id,
+        ));
     });
   }
 }
@@ -164,7 +173,7 @@ class _CommentScreenState extends State<CommentScreen> {
 class Comment extends StatelessWidget {
   final String? username;
   final String? userId;
-  final  avatarUrl;
+  final avatarUrl;
   final comment;
   final DateTime? timestamp;
 
@@ -178,12 +187,12 @@ class Comment extends StatelessWidget {
   factory Comment.fromDocument(DocumentSnapshot document) {
     //var data = document.data();
     return Comment(
-      // username: data['username'],
-      // userId: data['userId'],
-      // comment: data["comment"],
-      // timestamp: data["timestamp"],
-      // avatarUrl: data["avatarUrl"],
-    );
+        // username: data['username'],
+        // userId: data['userId'],
+        // comment: data["comment"],
+        // timestamp: data["timestamp"],
+        // avatarUrl: data["avatarUrl"],
+        );
   }
 
   @override

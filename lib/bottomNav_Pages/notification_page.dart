@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
-  const NotificationPage({ Key? key }) : super(key: key);
+  const NotificationPage({Key? key}) : super(key: key);
 
   @override
   _NotificationPageState createState() => _NotificationPageState();
@@ -12,10 +12,14 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification'),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: Text(
+          'Notification',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
-      body: Container(
-      ),
+      body: Container(),
     );
   }
 }

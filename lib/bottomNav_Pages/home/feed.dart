@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:security_app/components/Post.dart';
 import 'package:security_app/components/new_comment_page.dart';
+import 'package:security_app/components/share_button.dart';
 
 // ignore: must_be_immutable
 class Feed extends StatefulWidget {
@@ -24,9 +25,7 @@ class _FeedState extends State<Feed> {
     });
   }
 
-  void incrementthumbDown() {
-    
-  }
+  void incrementthumbDown() {}
 
   getlist() {}
 
@@ -119,7 +118,7 @@ class _FeedState extends State<Feed> {
                                           ),
                                           Text(
                                             postsList![i].username,
-                                            style: GoogleFonts.roboto(
+                                            style: GoogleFonts.poppins(
                                               fontSize: 18,
                                             ),
                                           ),
@@ -137,7 +136,7 @@ class _FeedState extends State<Feed> {
                                       child: Text(
                                         "30 May 2020",
                                         textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                        style: GoogleFonts.sora(
                                             color: Colors.black,
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.w500),
@@ -169,7 +168,7 @@ class _FeedState extends State<Feed> {
                                     children: [
                                       TextSpan(
                                         text: "${postsList![i].caption}",
-                                        style: TextStyle(
+                                        style: GoogleFonts.sora(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),
@@ -185,21 +184,20 @@ class _FeedState extends State<Feed> {
                                 children: <Widget>[
                                   IconButton(
                                     icon: Icon(Icons.thumb_up_off_alt),
-                                    onPressed: (){
+                                    onPressed: () {
                                       setState(() {
-                                          thumbUp++;
-                                        });
+                                        thumbUp++;
+                                      });
                                     },
                                   ),
                                   Text('$thumbUp'),
                                   IconButton(
                                       icon: Icon(Icons.thumb_down_off_alt),
-                                      onPressed: (){
+                                      onPressed: () {
                                         setState(() {
                                           thumbDown++;
                                         });
-                                      }
-                                      ),
+                                      }),
                                   Text('$thumbDown'),
                                   IconButton(
                                       icon: Icon(Icons.comment),
@@ -216,7 +214,13 @@ class _FeedState extends State<Feed> {
                                       onPressed: () {}),
                                   IconButton(
                                       icon: Icon(Icons.share),
-                                      onPressed: () {}),
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (builder) =>
+                                                socialShareButtomSheet(context));
+                                      }),
                                   IconButton(
                                       icon: Icon(Icons.save), onPressed: () {}),
                                 ],
@@ -234,3 +238,4 @@ class _FeedState extends State<Feed> {
     );
   }
 }
+

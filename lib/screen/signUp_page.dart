@@ -45,7 +45,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             children: [
                               Text('Create Account'),
                               SizedBox(height: 12),
-                              TextField(
+                              Container(child: Column(children: [
+                                TextField(
                                 textInputAction: TextInputAction.next,
                                 textAlign: TextAlign.center,
                                 decoration: kTextFieldDecoration.copyWith(
@@ -68,34 +69,36 @@ class _SignUpPageState extends State<SignUpPage> {
                                 },
                               ),
                               SizedBox(height: 10.0),
-                              InternationalPhoneNumberInput(
-                                onInputChanged: (PhoneNumber number) {
-                                  print(number.phoneNumber);
-                                },
-                                onInputValidated: (bool value) {
-                                  print(value);
-                                },
-                                selectorConfig: SelectorConfig(
-                                  showFlags: true,
-                                  setSelectorButtonAsPrefixIcon: true,
-                                  selectorType: PhoneInputSelectorType.DROPDOWN,
+                              Container(
+                                child: InternationalPhoneNumberInput(
+                                  onInputChanged: (PhoneNumber number) {
+                                    print(number.phoneNumber);
+                                  },
+                                  onInputValidated: (bool value) {
+                                    print(value);
+                                  },
+                                  selectorConfig: SelectorConfig(
+                                    showFlags: true,
+                                    setSelectorButtonAsPrefixIcon: true,
+                                    selectorType: PhoneInputSelectorType.DROPDOWN,
+                                  ),
+                                  ignoreBlank: false,
+                                  autoValidateMode: AutovalidateMode.disabled,
+                                  selectorTextStyle: TextStyle(color: Colors.black),
+                                  initialValue: number,
+                                  errorMessage: 'Invalid phone number',
+                                  textFieldController: controller,
+                                  formatInput: false,
+                                  inputDecoration: kTextFieldDecoration.copyWith(
+                                    hintText: 'Enter phone number',
+                                    contentPadding: EdgeInsets.all(20),
+                                  ),
+                                  keyboardType: TextInputType.numberWithOptions(
+                                      signed: true, decimal: true),
+                                  onSaved: (PhoneNumber number) {
+                                    print('On Saved: $number');
+                                  },
                                 ),
-                                ignoreBlank: false,
-                                autoValidateMode: AutovalidateMode.disabled,
-                                selectorTextStyle: TextStyle(color: Colors.black),
-                                initialValue: number,
-                                errorMessage: 'Invalid phone number',
-                                textFieldController: controller,
-                                formatInput: false,
-                                inputDecoration: kTextFieldDecoration.copyWith(
-                                  hintText: 'Enter phone number',
-                                  contentPadding: EdgeInsets.all(20),
-                                ),
-                                keyboardType: TextInputType.numberWithOptions(
-                                    signed: true, decimal: true),
-                                onSaved: (PhoneNumber number) {
-                                  print('On Saved: $number');
-                                },
                               ),
                               SizedBox(height: 10.0),
                               TextField(
@@ -135,6 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   //Do something with the user input.
                                 },
                               ),
+                              ],),),
                               SizedBox(height: 10.0),
                               RoundedButton(
                                 title: 'Sign Up',
@@ -147,47 +151,51 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         SizedBox(height: 8.0),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                        Text(
-                          'Or',
-                          style: kTextStyle.copyWith(fontSize: 20.0),
-                        ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'Sign In using',
-                          style: kTextStyle.copyWith(
-                              fontSize: 20.0, color: Colors.black54),
-                        ),
-                      ],),
-                      SizedBox(height: 8.0),
-                      Row(
-                      children: [
-                        Expanded(
-                          child: RoundedButton(
-                            title: 'Google',
-                            color: Colors.black,
-                            onpressed: () {
-                              //Implement login functionality.
-                            },
+                      Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          Text(
+                            'Or',
+                            style: kTextStyle.copyWith(fontSize: 20.0),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Expanded(
-                          child: RoundedButton(
-                            title: 'Phone No',
-                            color: Colors.black,
-                            onpressed: () {
-                              //Implement phone login functionality.
-                              Navigator.pushNamed(
-                                  context, PhoneInputPage.id);
-                            },
+                          SizedBox(height: 8.0),
+                          Text(
+                            'Sign In using',
+                            style: kTextStyle.copyWith(
+                                fontSize: 20.0, color: Colors.black54),
                           ),
+                        ],),
                       ),
-                      ],
+                      SizedBox(height: 8.0),
+                      Container(
+                        child: Row(
+                        children: [
+                          Expanded(
+                            child: RoundedButton(
+                              title: 'Google',
+                              color: Colors.black,
+                              onpressed: () {
+                                //Implement login functionality.
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Expanded(
+                            child: RoundedButton(
+                              title: 'Phone No',
+                              color: Colors.black,
+                              onpressed: () {
+                                //Implement phone login functionality.
+                                Navigator.pushNamed(
+                                    context, PhoneInputPage.id);
+                              },
+                            ),
+                        ),
+                        ],
+                        ),
                       ),
                       ],
                     ),
