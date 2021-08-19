@@ -22,7 +22,7 @@ class Sos extends StatelessWidget {
           leading: Stack(
                 children: [
                    Padding(
-            padding: const EdgeInsets.only(left: 6.0, top: 6.0),
+            padding: const EdgeInsets.only(left: 6.0, top: 15),
             child: Container(
                 height: 50.0,
                 width: 50.0,
@@ -36,7 +36,7 @@ class Sos extends StatelessWidget {
               ),
           ),
            Positioned(
-                  bottom: 25.0,
+                  bottom: 15.0,
                   right: 3.0,
                   child: CircleAvatar(
                     radius: 6,
@@ -47,111 +47,112 @@ class Sos extends StatelessWidget {
               ),
           ),
         backgroundColor: Colors.white,
-        body: Container(
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+        body: ListView(
+          children: [
+            Container(
+              child: Column(
+                children: [
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 50.0),
+                          GestureDetector(
+                            child: CircleAvatar(
+                              backgroundColor: Colors.red[900],
+                              radius: 70,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'SOS',
+                                    style: kTextStyle.copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Text(
+                                    'Click Here',
+                                    style: kTextStyle.copyWith(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 50.0),
+                  Container(
                     child: Column(
                       children: [
-                        SizedBox(height: 50.0),
-                        GestureDetector(
-                          child: CircleAvatar(
-                            backgroundColor: Colors.red[900],
-                            radius: 70,
+                        Padding(
+                          padding: const EdgeInsets.all(25.0),
+                          child: Container(
+                            color: Colors.white,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  'SOS',
-                                  style: kTextStyle.copyWith(
-                                    color: Colors.white,
-                                  ),
+                                Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(25.0),
+                                      child: Material(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        elevation: 5.0,
+                                        child: MaterialButton(
+                                          onPressed: () {},
+                                          minWidth: 150.0,
+                                          height: 42.0,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'Add Emergency Number',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.yellow[800],
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Icon(
+                                                Icons.add_box_sharp,
+                                                color: Colors.yellow[800],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(height: 5.0),
-                                Text(
-                                  'Click Here',
-                                  style: kTextStyle.copyWith(
-                                    fontSize: 15,
-                                    color: Colors.white,
+                                TextButton(
+                                  child: Text(
+                                    'View Numbers',
+                                    style: kTextStyle.copyWith(
+                                        fontSize: 20, color: Colors.lightBlue),
                                   ),
-                                )
+                                  onPressed: () {},
+                                ),
                               ],
                             ),
                           ),
-                          onTap: () {},
                         ),
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
-              Expanded(
-                child: Container(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: Container(
-                          color: Colors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Material(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      elevation: 5.0,
-                                      child: MaterialButton(
-                                        onPressed: () {},
-                                        minWidth: 150.0,
-                                        height: 42.0,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Add Emergency Number',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Colors.yellow[800],
-                                                fontSize: 20.0,
-                                              ),
-                                            ),
-                                            SizedBox(width: 10),
-                                            Icon(
-                                              Icons.add_box_sharp,
-                                              color: Colors.yellow[800],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              TextButton(
-                                child: Text(
-                                  'View Numbers',
-                                  style: kTextStyle.copyWith(
-                                      fontSize: 20, color: Colors.lightBlue),
-                                ),
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

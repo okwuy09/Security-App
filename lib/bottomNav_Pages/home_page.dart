@@ -36,8 +36,9 @@ class _HomePageState extends State<HomePage>
       child: Scaffold(
         floatingActionButton: ButtonSpeedDial(),
         appBar: AppBar(
+          toolbarHeight: 75.0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.black54,
+          backgroundColor: Colors.blueGrey[900],
           actions: [
             Expanded(
               child: Padding(
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage>
                   children: [
                     GestureDetector(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsets.only(left: 10.0, top: 15.0),
                         child: Container(
                               height: 50.0,
                               width: 50.0,
@@ -76,7 +77,7 @@ class _HomePageState extends State<HomePage>
             Expanded(
               flex: 3,
               child: Padding(
-                padding: const EdgeInsets.only(top: 2, bottom: 4),
+                padding: const EdgeInsets.only(top: 15),
                 child: MySearchField(searchController: _searchController),
               ),
             ),

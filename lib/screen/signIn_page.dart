@@ -35,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 40.0),
+                  padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 40.0),
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -91,55 +91,60 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                             ),
                             
-                            SizedBox(height: 35.0),
+                            SizedBox(height: 25.0),
                             Container(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  Container(
-                                    child: TextField(
-                                      keyboardType: TextInputType.emailAddress,
-                                      textAlign: TextAlign.center,
-                                      textInputAction: TextInputAction.next,
-                                      decoration: kTextFieldDecoration.copyWith(
-                                        hintText: 'Enter your email',
-                                        prefixIcon: Icon(
-                                          Icons.email,
-                                          color: Colors.yellow[800],
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Container(
+                                      child: TextField(
+                                        keyboardType: TextInputType.emailAddress,
+                                        textAlign: TextAlign.center,
+                                        textInputAction: TextInputAction.next,
+                                        decoration: kTextFieldDecoration.copyWith(
+                                          hintText: 'Enter your email',
+                                          prefixIcon: Icon(
+                                            Icons.email,
+                                            color: Colors.yellow[800],
+                                          ),
                                         ),
+                                        onChanged: (value) {
+                                          //Do something with the user input.
+                                        },
                                       ),
-                                      onChanged: (value) {
-                                        //Do something with the user input.
-                                      },
                                     ),
                                   ),
-                                  SizedBox(height: 10.0 ),
                             
-                                  Container(
-                                    child: TextFormField(
-                                      validator: (value) => value!.length < 6
-                                          ? 'Password too short.'
-                                          : null,
-                                      textAlign: TextAlign.center,
-                                      obscureText: _obscureText,
-                                      decoration: kTextFieldDecoration.copyWith(
-                                        hintText: 'Enter your password',
-                                        prefixIcon:
-                                            Icon(Icons.lock, color: Colors.yellow[800]),
-                                        suffixIcon: TextButton(
-                                          onPressed: _toggle,
-                                          child: new Text(
-                                            _obscureText ? "Show" : "Hide",
-                                            style: TextStyle(
-                                              color: Colors.yellow[800],
-                                              fontWeight: FontWeight.bold,
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Container(
+                                      child: TextFormField(
+                                        validator: (value) => value!.length < 6
+                                            ? 'Password too short.'
+                                            : null,
+                                        textAlign: TextAlign.center,
+                                        obscureText: _obscureText,
+                                        decoration: kTextFieldDecoration.copyWith(
+                                          hintText: 'Enter your password',
+                                          prefixIcon:
+                                              Icon(Icons.lock, color: Colors.yellow[800]),
+                                          suffixIcon: TextButton(
+                                            onPressed: _toggle,
+                                            child: new Text(
+                                              _obscureText ? "Show" : "Hide",
+                                              style: TextStyle(
+                                                color: Colors.yellow[800],
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ),
                                         ),
+                                        onChanged: (value) {
+                                          //Do something with the user input.
+                                        },
                                       ),
-                                      onChanged: (value) {
-                                        //Do something with the user input.
-                                      },
                                     ),
                                   ),
                             
